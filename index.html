@@ -9,6 +9,11 @@
     <title>CerebrasUI</title>
 </head>
 <body>
+    <div id="apiKeyModal" class="modal">
+        <div class="modal-content">
+            <input id="apiKeyInput" type="password" placeholder="Cerebras API Key">
+        </div>
+    </div>
     <header>
 
     </header>
@@ -16,12 +21,7 @@
         <div id="messages" class="messages"></div>
     </main>
     <footer>
-        <div class="inputGroup">
-            <input id="apiKey" type="password" placeholder="Cerebras API Key">
-            <input id="userInput" type="text" placeholder="Your message...">
-            <button id="sendButton" onclick="sendMessage()">Send</button>
-        </div>
-        <div id="status"></div>
+        <textarea id="userInput" placeholder="Your message..."></textarea>
     </footer>
 </body>
 <script type="module" src="scripts/script.js"></script>

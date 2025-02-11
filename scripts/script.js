@@ -4,13 +4,15 @@ const messagesDiv = document.getElementById('messages');
 
 const userInput = document.getElementById('userInput');
 
-const apiKeyInput = document.getElementById('apiKey');
+const apiKeyModal = document.getElementById('apiKeyModal');
 
-const statusDiv = document.getElementById('status');
+const apiKeyInput = document.getElementById('apiKeyInput');
 
 let cerebrasClient = null;
 
 let conversationHistory = [];
+
+let storedApiKey = "";
 
 function extractCodeBlocks(text) {
 
@@ -54,11 +56,7 @@ function parseMarkdown(text) {
 
     let processedText = escapeHtml(newText);
 
-    processedText = processedText.replace(/`([^`]+)`/g, (match, code) => {
-
-        return `<code>${code}</code>`;
-
-    });
+    processedText = processedText.replace(/`([^`]+)`/g, (match, code) => `<code>${code}</code>`);
 
     processedText = processedText.replace(/^###### (.*$)/gm, '<h6>$1</h6>');
 
@@ -103,12 +101,12 @@ function parseMarkdown(text) {
         if (block.language) {
 
             return `<div class="code-block">
-                        
-                        <div class="code-lang">${block.language}</div>
-                        
-                        <pre>${escapedCode}</pre>
-                    
-                    </div>`;
+                
+                <div class="code-lang">${block.language}</div>
+                
+                <pre>${escapedCode}</pre>
+              
+              </div>`;
 
         } else {
 
@@ -140,9 +138,7 @@ async function sendMessage() {
 
     const userMessage = userInput.value;
 
-    const apiKey = apiKeyInput.value;
-
-    if (!userMessage || !apiKey) return;
+    if (!userMessage || !storedApiKey) return;
 
     conversationHistory.push({ role: 'user', content: userMessage });
 
@@ -150,13 +146,13 @@ async function sendMessage() {
 
     userInput.value = '';
 
+    userInput.style.height = 'auto';
+
     const responseElement = addMessage('assistant', '');
 
     try {
 
-        statusDiv.textContent = 'Loading...';
-
-        const client = initClient(apiKey);
+        const client = initClient(storedApiKey);
 
         const stream = await client.chat.completions.create({
 
@@ -176,7 +172,7 @@ async function sendMessage() {
 
             responseText += content;
 
-            responseElement.innerHTML = parseMarkdown(responseText);  // Utilisation du parseur Markdown ici
+            responseElement.innerHTML = parseMarkdown(responseText);
 
             messagesDiv.scrollTop = messagesDiv.scrollHeight;
 
@@ -189,10 +185,6 @@ async function sendMessage() {
         responseElement.textContent = 'Error: ' + error.message;
 
         console.error(error);
-
-    } finally {
-
-        statusDiv.textContent = '';
 
     }
 
@@ -214,13 +206,47 @@ function addMessage(role, content) {
 
 }
 
+userInput.addEventListener('input', function () {
+
+    this.style.height = 'auto';
+
+    this.style.height = Math.min(this.scrollHeight, 200) + 'px';
+
+});
+
 userInput.addEventListener('keydown', (e) => {
+
+    if (e.key === 'Enter' && !e.shiftKey) {
+
+        e.preventDefault();
+
+        sendMessage();
+
+    }
+
+});
+
+apiKeyInput.addEventListener('keydown', (e) => {
 
     if (e.key === 'Enter') {
 
         e.preventDefault();
 
-        sendMessage();
+        const apiKey = apiKeyInput.value;
+
+        if (apiKey.trim() === "") {
+
+            alert("Veuillez entrer une clé API valide.");
+
+            return;
+
+        }
+
+        storedApiKey = apiKey;
+
+        initClient(storedApiKey);
+
+        apiKeyModal.style.display = 'none';
 
     }
 
