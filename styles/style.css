@@ -175,6 +175,10 @@ a:hover {
         z-index: 1;
     }
 
+    .modal {
+        display: none;
+    }
+
     header {
         display: none;
     }
