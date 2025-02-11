@@ -12,7 +12,7 @@ let cerebrasClient = null;
 
 let conversationHistory = [];
 
-let storedApiKey = sessionStorage.getItem("cerebrasApiKey") || "";
+let storedApiKey = localStorage.getItem("cerebrasApiKey") || "";
 
 if (storedApiKey) {
 
@@ -252,7 +252,7 @@ apiKeyInput.addEventListener('keydown', (e) => {
 
         }
 
-        sessionStorage.setItem("cerebrasApiKey", apiKey);
+        localStorage.setItem("cerebrasApiKey", apiKey);
 
         storedApiKey = apiKey;
 
