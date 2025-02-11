@@ -12,7 +12,19 @@ let cerebrasClient = null;
 
 let conversationHistory = [];
 
-let storedApiKey = "";
+let storedApiKey = sessionStorage.getItem("cerebrasApiKey") || "";
+
+if (storedApiKey) {
+
+    initClient(storedApiKey);
+
+    apiKeyModal.style.display = 'none';
+
+} else {
+
+    apiKeyModal.style.display = 'flex';
+
+}
 
 function extractCodeBlocks(text) {
 
@@ -232,15 +244,15 @@ apiKeyInput.addEventListener('keydown', (e) => {
 
         e.preventDefault();
 
-        const apiKey = apiKeyInput.value;
+        const apiKey = apiKeyInput.value.trim();
 
-        if (apiKey.trim() === "") {
-
-            alert("Veuillez entrer une clé API valide.");
+        if (apiKey === "") {
 
             return;
 
         }
+
+        sessionStorage.setItem("cerebrasApiKey", apiKey);
 
         storedApiKey = apiKey;
 
