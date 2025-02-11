@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>CerebrasUI</title>
+</head>
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div id="messages" class="messages"></div>
+    </main>
+    <footer>
+        <div class="inputGroup">
+            <input id="apiKey" type="password" placeholder="Cerebras API Key">
+            <input id="userInput" type="text" placeholder="Your message...">
+            <button id="sendButton" onclick="sendMessage()">Send</button>
+        </div>
+        <div id="status"></div>
+    </footer>
+</body>
+<script type="module" src="scripts/script.js"></script>
+</html>
