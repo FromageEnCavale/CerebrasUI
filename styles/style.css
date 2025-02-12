@@ -20,7 +20,7 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
-    line-height: 1.5;
+    line-height: 1.4;
 }
 
 /* ----- MODAL ----- */
@@ -74,7 +74,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    max-width: 750px;
+    max-width: 100%;
     padding: 8px 12px;
     border-radius: 12px;
 }
@@ -126,7 +126,7 @@ footer {
 code {
     padding: 2px;
     border-radius: 4px;
-    background-color: rgba(226, 132, 19, 0.05);
+    background-color: rgba(226, 132, 19, 0.1);
     font-size: 16px;
 }
 
@@ -138,7 +138,7 @@ code {
 }
 
 pre {
-    width: 650px;
+    width: 750px;
     padding: 12px 16px;
     border-radius: 0 0 4px 4px;
     overflow-x: auto;
