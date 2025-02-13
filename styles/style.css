@@ -74,7 +74,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    max-width: 100%;
+    max-width: 750px;
     padding: 8px 12px;
     border-radius: 12px;
 }
@@ -138,7 +138,7 @@ code {
 }
 
 pre {
-    width: 750px;
+    width: 650px;
     padding: 12px 16px;
     border-radius: 0 0 4px 4px;
     overflow-x: auto;
