@@ -15,12 +15,12 @@ body {
     height: 100vh;
     color: #000022;
     background-color: #ECF0F1;
-    font-family: "Roboto", serif;
+    font-family: "Roboto", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
     font-size: 18px;
-    line-height: 1.4;
+    line-height: 1.6;
 }
 
 /* ----- MODAL ----- */
@@ -39,8 +39,9 @@ body {
 .modal-content {
     padding: 8px 12px;
     border-radius: 12px;
-    border: 1.5px solid #DCE3E5;
-    background-color: rgba(220, 227, 229, 0.6);
+    background-color: #DCE3E5;
+    /*border: 1.5px solid #DCE3E5;
+    background-color: rgba(220, 227, 229, 0.6);*/
 }
 
 /* ----- HEADER ----- */
@@ -107,8 +108,9 @@ footer {
     padding: 8px 12px;
     margin-bottom: 8px;
     border-radius: 12px;
-    border: 1.5px solid #DCE3E5;
-    background-color: rgba(220, 227, 229, 0.6);
+    background-color: #DCE3E5;
+    /*border: 1.5px solid #DCE3E5;
+    background-color: rgba(220, 227, 229, 0.6);*/
 }
 
 #userInput {
@@ -123,13 +125,6 @@ footer {
 
 /* ----- MARKDOWN ----- */
 
-code {
-    padding: 2px;
-    border-radius: 4px;
-    background-color: #DCE3E5;
-    font-size: 16px;
-}
-
 pre {
     width: 650px;
     padding: 12px 16px;
@@ -137,7 +132,18 @@ pre {
     overflow-x: auto;
     scrollbar-width: none;
     background-color: #DCE3E5;
+    line-height: 1.2;
+}
+
+code {
+    padding: 2px 4px;
+    border-radius: 4px;
+    background-color: #DCE3E5;
     font-size: 16px;
+}
+
+ul, ol {
+    list-style-position: inside;
 }
 
 a {
@@ -148,13 +154,9 @@ a:hover {
     color: rgba(226, 132, 19, 0.6);
 }
 
-ul, ol {
-    list-style-position: inside;
-}
-
 /* ----- RESPONSIVE ----- */
 
-@media (max-width: 850px) {
+@media (max-width: 866px) {
 
     body {
         display: none;
