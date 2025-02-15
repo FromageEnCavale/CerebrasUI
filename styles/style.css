@@ -17,9 +17,9 @@ body {
     background-color: #ECF0F1;
     font-family: "Inter", serif;
     font-optical-sizing: auto;
-    font-weight: 400;
     font-style: normal;
-    font-size: 18px;
+    font-weight: 400;
+    font-size: 16px;
     line-height: 1.6;
 }
 
@@ -40,14 +40,14 @@ body {
     padding: 8px 12px;
     border-radius: 12px;
     background-color: #DCE3E5;
-    /*border: 1.5px solid #DCE3E5;
-    background-color: rgba(220, 227, 229, 0.6);*/
 }
 
 /* ----- HEADER ----- */
 
 header {
     display: none;
+    max-width: 900px;
+    width: 60vw;
 }
 
 /* ----- MAIN ----- */
@@ -55,9 +55,10 @@ header {
 main {
     display: flex;
     flex-direction: column;
-    width: 850px;
+    max-width: 900px;
+    width: 60vw;
     height: 100%;
-    padding: 8px;
+    padding: 8px 16px;
     overflow-y: auto;
     scrollbar-width: none;
 }
@@ -75,7 +76,7 @@ main {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    max-width: 750px;
+    max-width: 90%;
     padding: 8px 12px;
     border-radius: 12px;
 }
@@ -95,22 +96,26 @@ main {
     align-items: start;
     width: fit-content;
     margin-right: auto;
+    padding: 8px 0;
 }
 
 /* ----- FOOTER ----- */
 
 footer {
+    max-width: 900px;
+    width: 60vw;
+    height: fit-content;
+    padding: 0 8px 8px 8px;
+}
+
+.inputContainer {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 850px;
-    height: fit-content;
+    width: 100%;
     padding: 8px 12px;
-    margin-bottom: 8px;
     border-radius: 12px;
     background-color: #DCE3E5;
-    /*border: 1.5px solid #DCE3E5;
-    background-color: rgba(220, 227, 229, 0.6);*/
 }
 
 #userInput {
@@ -126,7 +131,7 @@ footer {
 /* ----- MARKDOWN ----- */
 
 pre {
-    width: 650px;
+    width: 90%;
     padding: 12px 16px;
     border-radius: 4px;
     overflow-x: auto;
@@ -139,7 +144,7 @@ code {
     padding: 2px 4px;
     border-radius: 4px;
     background-color: #DCE3E5;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 ul, ol {
@@ -156,10 +161,26 @@ a:hover {
 
 /* ----- RESPONSIVE ----- */
 
-@media (max-width: 866px) {
+@media (max-width: 1200px) {
 
-    body {
-        display: none;
+    header {
+        width: 100vw;
+    }
+
+    main {
+        width: 100vw;
+    }
+
+    .user {
+        max-width: 90%;
+    }
+
+    .assistant {
+        max-width: 100%;
+    }
+
+    footer {
+        width: 100vw;
     }
 
 }
